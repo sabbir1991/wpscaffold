@@ -104,6 +104,7 @@ After running, you'll see an interactive prompt session:
 | **Plugin URI** | `{authorUri}/{slug}` | Plugin homepage URL |
 | **Namespace Vendor** | First word of author (PascalCase) | PHP namespace vendor segment |
 | **Namespace Package** | PascalCase of slug | PHP namespace package segment |
+| **Constant Prefix** | UPPER_SNAKE from slug | PHP constant prefix (e.g. `MY_PLUGIN`) |
 | **Plugin Type** | `both` | Controls what files are scaffolded |
 
 ---

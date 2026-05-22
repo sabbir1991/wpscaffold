@@ -19,18 +19,18 @@ class Menu {
 	use Singleton;
 
 	/**
-	 * Constructor — registers hooks.
+	 * Constructor.
 	 */
-	public function __construct() {
+	protected function __construct() {
 		$this->setup_hooks();
 	}
 
 	/**
-	 * Wire up WordPress hooks.
+	 * Register WordPress hooks.
 	 *
 	 * @return void
 	 */
-	public function setup_hooks(): void {
+	private function setup_hooks(): void {
 		add_action( 'admin_menu', [ $this, 'register_menu' ] );
 	}
 

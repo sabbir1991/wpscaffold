@@ -20,9 +20,18 @@ class Assets {
 
 	/* @skeleton-admin */
 	/**
-	 * Constructor — registers admin asset hooks.
+	 * Constructor.
 	 */
-	public function __construct() {
+	protected function __construct() {
+		$this->setup_hooks();
+	}
+
+	/**
+	 * Register WordPress hooks.
+	 *
+	 * @return void
+	 */
+	private function setup_hooks(): void {
 		add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
 	}
 
@@ -34,13 +43,15 @@ class Assets {
 	public function admin_scripts(): void {
 		$this->register_script( 'plugin-skeleton-admin', 'build/admin.js', [], PLUGIN_SKELETON_VERSION, true );
 		$this->register_style( 'plugin-skeleton-admin', 'build/admin.css', [], PLUGIN_SKELETON_VERSION );
+		wp_enqueue_script( 'plugin-skeleton-admin' );
+		wp_enqueue_style( 'plugin-skeleton-admin' );
 	}
 	/* @skeleton-admin-end */
 	/* @skeleton-block-only */
 	/**
 	 * Constructor — no hooks needed for block-only plugins.
 	 */
-	public function __construct() {
+	protected function __construct() {
 	}
 	/* @skeleton-block-only-end */
 
@@ -55,8 +66,8 @@ class Assets {
 	public function get_asset_meta( string $file, array $deps = [], $ver = false ): array {
 		$asset_meta_file = sprintf(
 			'%s/%s.asset.php',
-			untrailingslashit( PLUGIN_SKELETON_ASSET_BUILD_PATH ),
-			basename( $file, '.' . pathinfo( $file, PATHINFO_EXTENSION ) )
+			untrailingslashit( PLUGIN_SKELETON_ASSET_PATH ),
+			preg_replace( '/\.[^.]+$/', '', $file )
 		);
 
 		$asset_meta = is_readable( $asset_meta_file )
@@ -83,7 +94,7 @@ class Assets {
 			return $ver;
 		}
 
-		$file_path = sprintf( '%s/%s', PLUGIN_SKELETON_ASSET_BUILD_PATH, $file );
+		$file_path = sprintf( '%s/%s', PLUGIN_SKELETON_ASSET_PATH, $file );
 
 		return file_exists( $file_path ) ? (string) filemtime( $file_path ) : false;
 	}
