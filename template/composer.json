@@ -1,0 +1,34 @@
+{
+    "name": "wprigel/plugin-skeleton",
+    "type": "wordpress-plugin",
+    "description": "A WordPress plugin skeleton for rapid development.",
+    "require": {},
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^3.1",
+        "phpcompatibility/phpcompatibility-wp": "*",
+        "sirbrillig/phpcs-variable-analysis": "^2.11",
+        "brain/monkey": "^2.6",
+        "yoast/phpunit-polyfills": "^2.0",
+        "phpunit/phpunit": "^9.5 || ^10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "wpRigel\\PluginSkeleton\\": "includes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "wpRigel\\PluginSkeleton\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "cs": "@php ./vendor/bin/phpcs",
+        "cs:fix": "@php ./vendor/bin/phpcbf",
+        "test": "@php ./vendor/bin/phpunit"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

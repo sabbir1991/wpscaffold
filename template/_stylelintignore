@@ -1,0 +1,11 @@
+node_modules/
+build/
+assets/build/
+vendor/
+**/*.js
+**/*.jsx
+**/*.json
+**/*.ts
+**/*.tsx
+**/*.php
+**/*.svg

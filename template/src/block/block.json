@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wprigel/plugin-skeleton",
+	"version": "1.0.0",
+	"title": "Plugin Skeleton Block",
+	"category": "widgets",
+	"description": "A WordPress plugin skeleton for rapid development.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "plugin-skeleton",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}
